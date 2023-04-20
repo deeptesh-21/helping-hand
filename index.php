@@ -4,29 +4,89 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <title>Document</title>
-</head>
-<body>
-    <span class="demo1"></span>
-    <span class="demo2"></span>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
 
-    <script>
-        function updateReading() { //just displaying data from json continuously
-            $.ajax({
-                url: './gpsdata.json',
-                dataType: 'json',
-                type: 'POST',
-                success: function(data) {
-                    console.log(data);
-                    $('#demo1').text(data.longitude);
-                    $('#demo2').html(data.longitude);
-                }
-            });
-        }
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
 
-        setInterval(updateReading, 2000);
-    </script>
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+
+     
+     <title>Document</title>
+    </head>
+    <body>
+        <div class="nav-bar"><h1>Helping Hand</h1></div>
+        
+        <div id="map"></div>
+            
+        </div>
+        
+        <script>
+            function updateReading() { //just displaying data from json continuously
+                $.ajax({
+                    url: './gpsdata.json',
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function(data) {
+                        console.log(data);
+                        $('#demo1').text(data.longitude);
+                        $('#demo2').html(data.longitude);
+                    }
+                });
+            }
+            setInterval(updateReading, 2000);
+        </script>
+        
+        <script>
+
+            const map = L.map('map').setView([51.505, -0.09], 13);
+        
+            const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+        
+            const marker = L.marker([51.5, -0.67687]).addTo(map)
+                .bindPopup('<b>Ambulance Location</b>').openPopup();
+        
+            // const circle = L.circle([51.508, -0.11], {
+            //     color: 'red',
+            //     fillColor: '#f03',
+            //     fillOpacity: 0.5,
+            //     radius: 500
+            // }).addTo(map).bindPopup('I am a circle.');
+        
+            // const polygon = L.polygon([
+            //     [51.509, -0.08],
+            //     [51.503, -0.06],
+            //     [51.51, -0.047]
+            // ]).addTo(map).bindPopup('I am a polygon.');
+        
+        
+            // const popup = L.popup()
+            //     .setLatLng([51.513, -0.09])
+            //     .setContent('I am a standalone popup.')
+            //     .openOn(map);
+        
+            // function onMapClick(e) {
+            //     popup
+            //         .setLatLng(e.latlng)
+            //         .setContent(`You clicked the map at ${e.latlng.toString()}`)
+            //         .openOn(map);
+            // }
+
+            setInterval(, 1000)
+        
+            map.on('click', onMapClick);
+        
+        </script>
 </body>
 </html>
