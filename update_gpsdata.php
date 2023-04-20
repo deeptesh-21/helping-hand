@@ -6,9 +6,9 @@
 
     $conn = mysqli_connect($hostname, $username, $password, $database) or die("Unable to connect to database");
 
-    if ($_GET["latitude"] && $_GET["longitude"]) {
-        $latitude = $_GET["latitude"];
-        $longitude = $_GET["longitude"];
+    if ($_POST["latitude"] || $_POST["longitude"]) {
+        $latitude = $_POST["latitude"];
+        $longitude = $_POST["longitude"];
         $id = 1;
 
         echo $latitude;
