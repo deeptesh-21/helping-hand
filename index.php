@@ -23,7 +23,7 @@
      <title>Document</title>
     </head>
     <body>
-        <div class="nav-bar"><h1>Helping Hand</h1></div>
+        <div class="nav-bar"><h1>Helping Hand</h1><a href="./medicalreports.php"><h3>Get Report</h2></a></div>
         
         <div id="map"></div>
             
@@ -82,10 +82,22 @@
             //         .setContent(`You clicked the map at ${e.latlng.toString()}`)
             //         .openOn(map);
             // }
+            var lat = 51.51;
+            var lon = -0.09;
 
-            setInterval(, 1000)
+            function updateGpsCoords() {
+
+                const marker = L.marker([lat, lon]).addTo(map)
+                .bindPopup('<b>Ambulance Location</b>').openPopup();
+
+                lat += 0.005;
+                lon += 0.005;
+            }
+
+            setInterval(updateGpsCoords, 1000);
+
+            map.removeLayer(marker);
         
-            map.on('click', onMapClick);
         
         </script>
 </body>
