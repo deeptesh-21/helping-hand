@@ -23,7 +23,7 @@
      <title>Document</title>
     </head>
     <body>
-        <div class="nav-bar"><h1>Helping Hand</h1><a href="./medicalreports.php"><h3>Get Report</h2></a></div>
+        <div class="nav-bar"><h1>Helping Hand</h1><a href="./generate_reports.php"><h3>Get Report</h2></a></div>
         
         <div id="map"></div>
             
@@ -57,31 +57,6 @@
             const marker = L.marker([51.5, -0.67687]).addTo(map)
                 .bindPopup('<b>Ambulance Location</b>').openPopup();
         
-            // const circle = L.circle([51.508, -0.11], {
-            //     color: 'red',
-            //     fillColor: '#f03',
-            //     fillOpacity: 0.5,
-            //     radius: 500
-            // }).addTo(map).bindPopup('I am a circle.');
-        
-            // const polygon = L.polygon([
-            //     [51.509, -0.08],
-            //     [51.503, -0.06],
-            //     [51.51, -0.047]
-            // ]).addTo(map).bindPopup('I am a polygon.');
-        
-        
-            // const popup = L.popup()
-            //     .setLatLng([51.513, -0.09])
-            //     .setContent('I am a standalone popup.')
-            //     .openOn(map);
-        
-            // function onMapClick(e) {
-            //     popup
-            //         .setLatLng(e.latlng)
-            //         .setContent(`You clicked the map at ${e.latlng.toString()}`)
-            //         .openOn(map);
-            // }
             var lat = 51.51;
             var lon = -0.09;
 

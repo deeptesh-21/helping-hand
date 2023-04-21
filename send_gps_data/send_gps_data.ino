@@ -17,7 +17,6 @@ WiFiClient client;
 
 double latitude, longitude;
 long currentTime, previousTime1, previousTime2;
-int ledstatus1, ledstatus2, ledstatus3;
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
@@ -35,50 +34,6 @@ void setup() {
   }
   Serial.println("done.");
 }
-
-// void updateGpsdata() {
-
-//   if (WiFi.status() == WL_CONNECTED) {
-
-//     http.begin(client, "http://192.168.0.102/helping-hand/"); // <1KB payload
-//     //  http.begin(client, "http://www.geekstips.com/esp8266-arduino-tutorial-iot-code-example/"); // 30KB payload
-
-//     int httpCode = http.GET();
-//     String payload = http.getString();  //Get the response payload
-
-//     Serial.println(httpCode);   //Print HTTP return code
-//     Serial.println(payload);    //Print request response payload
-
-//     DynamicJsonDocument doc(200);
-
-//     DeserializationError err = deserializeJson(doc, payload);
-
-//     if (err) {
-//       Serial.print(F("deserializeJson() failed with code "));
-//       Serial.println(err.f_str());
-//     }
-
-//     ledstatus1 = doc["ledstatus1"];
-//     ledstatus2 = doc["ledstatus2"];
-//     ledstatus3 = doc["ledstatus3"];
-
-//     // Serial.println(ledstatus1);
-
-//     if (ledstatus1) digitalWrite(D5, HIGH);
-//     else digitalWrite(D5, LOW);
-
-//     if (ledstatus2) digitalWrite(D6, HIGH);
-//     else digitalWrite(D6, LOW);
-
-//     if (ledstatus3) digitalWrite(D7, HIGH);
-//     else digitalWrite(D7, LOW);
-
-//     http.end();  //Close connection
-
-//     Serial.printf("Free heap: %d\n", ESP.getFreeHeap());
-
-//   }
-// }
 
 void updateGpsdata(double latitude, double longitude) {
 
