@@ -24,7 +24,7 @@ void setup() {
   Serial.begin(115200);
   softSer.begin(9600);
   Serial.println();
-  WiFi.begin("Computer1", "1234567890");
+  WiFi.begin("D&DC", "qwertzui");
 
   Serial.print("Connecting to WiFi");
   while (WiFi.status() != WL_CONNECTED) {
@@ -39,7 +39,7 @@ void updateGpsdata(double latitude, double longitude) {
 
   if (WiFi.status() == WL_CONNECTED) {
 
-    http.begin(client, "http://192.168.0.102/helping-hand/update_gpsdata.php");  // <1KB payload
+    http.begin(client, "http://192.168.197.1/helping-hand/update_gpsdata.php");  // <1KB payload
     // http.begin(client, "http://www.geekstips.com/esp8266-arduino-tutorial-iot-code-example/"); // 30KB payload
 
     http.addHeader("Content-Type", "application/x-www-form-urlencoded");

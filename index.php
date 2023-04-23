@@ -29,7 +29,7 @@
             
         </div>
         
-        <script>
+        <!-- <script>
             function updateReading() { //just displaying data from json continuously
                 $.ajax({
                     url: './gpsdata.json',
@@ -62,11 +62,8 @@
 
             function updateGpsCoords() {
 
-                const marker = L.marker([lat, lon]).addTo(map)
+                const marker = L.marker([15.42, 73.98]).addTo(map)
                 .bindPopup('<b>Ambulance Location</b>').openPopup();
-
-                lat += 0.005;
-                lon += 0.005;
             }
 
             setInterval(updateGpsCoords, 1000);
@@ -74,6 +71,37 @@
             map.removeLayer(marker);
         
         
+        </script> -->
+<!-- --------------------------------------------------------------------------------------------------------- -->
+        <script>
+
+            const map = L.map('map').setView([51.505, -0.09], 13);
+                    
+            const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+        
+            const marker = L.marker([0, 0]).addTo(map)
+                .bindPopup('<b>Ambulance Location</b>').openPopup();
+
+            function updateReading() { //just displaying data from json continuously
+                $.ajax({
+                    url: './gpsdata.json',
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function(data) {
+                        console.log(data);
+                        $('#demo1').text(data.longitude);
+                        $('#demo2').html(data.longitude);
+
+                        const marker = L.marker([data.latitude, data.longitude]).addTo(map)
+                        .bindPopup('<b>Ambulance Location</b>').openPopup();
+                    }
+                });
+            }
+
+            setInterval(updateReading, 1000);
         </script>
 </body>
 </html>
