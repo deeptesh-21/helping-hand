@@ -1,0 +1,9 @@
+git remote remove origin
+
+git remote add origin https://github.com/deeptesh-21/helping-hand.git
+
+git push --set-upstream origin main
+
+git commit -am "final"
+
+git push
