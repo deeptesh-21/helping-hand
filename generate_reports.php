@@ -14,7 +14,7 @@
         echo "<table>
             <tr>
                 <th>Name</th>
-                <td>Bill Gates</td>
+                <td>xyz</td>
             </tr>
             <tr>
                 <th>Telephone:</th>
@@ -23,6 +23,14 @@
             <tr>
                 <th>Telephone:</th>
                 <td>555 77 855</td>
+            </tr>
+            <tr>
+                <th>Blood Group:</th>
+                <td>A+</td>
+            </tr>
+            <tr>
+                <th>Blood Group:</th>
+                <td>A+</td>
             </tr>
         </table>";
     }
